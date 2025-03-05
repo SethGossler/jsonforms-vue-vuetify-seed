@@ -1,17 +1,20 @@
-# JSON Forms Vue Seed
+# JSON Forms Vue 3 Example for OES w/ Vuetify
+
+## Please Note...
+This is NOT The original JSON Forms See App. That can be found here: https://github.com/eclipsesource/jsonforms-vue-seed.
+
+I have no plans currently to maintain this repo. As of Early 2025, it may help you get started with Vue3 + Vuetify + JSON Forms.
+
+## Instructions
 
 This seed demonstrates how to use [JSON Forms](https://jsonforms.io) with Vue in order to render a simple form for displaying a task entity.
-
-You can find the [Vue 2 seed on the `vue2` branch](https://github.com/eclipsesource/jsonforms-vue-seed/tree/vue2).
-**_NOTE:_**  Vue 2 is only suported until JSON Forms 3.1.0.
 
 It is based on the `vue create` Hello World project.
 
 `src/App.vue` contains the JSON Forms specific code.
 
-- Execute `npm ci` to install the prerequisites.
-- Execute `npm run serve` to start the application.
+- Execute `pnpm dev` to start the application.
 
-Browse to http://localhost:8080 to see the application in action.
+Browse to http://localhost:5173 to see the dev application in action.
 
 For more information please see the JSON Forms Vue [documentation](https://jsonforms.io/docs/integrations/vue).
