@@ -1,0 +1,56 @@
+{
+  "type": "Control",
+  "scope": "#/properties/breaker",
+  "options": {
+    "detail": {
+      "type": "VerticalLayout",
+      "elements": [
+        { "type": "Control", "scope": "#/properties/baseVoltage", 
+          "options": {
+            "showUnfocusedDescription": true
+          }
+        },
+        { "type": "Control", "scope": "#/properties/breakingCapacity",
+          "options": {
+            "showUnfocusedDescription": true
+          }
+        },
+        {
+          "type": "Control",
+          "scope": "#/properties/connectedEquipment",
+          "options": {
+            "detail": {
+              "type": "VerticalLayout",
+              "elements": [
+                { "type": "Control", "scope": "#/properties/mrid" },
+                { "type": "Control", "scope": "#/properties/type" }
+              ]
+            }
+          }
+        },
+        { "type": "Control", "scope": "#/properties/connectedString" },
+        { "type": "Control", "scope": "#/properties/equipmentType" },
+        { "type": "Control", "scope": "#/properties/feederHead" },
+        {
+          "type": "Control",
+          "scope": "#/properties/location",
+          "options": {
+            "detail": {
+              "type": "VerticalLayout",
+              "elements": [
+                { "type": "Control", "scope": "#/properties/x" },
+                { "type": "Control", "scope": "#/properties/y" }
+              ]
+            }
+          }
+        },
+        { "type": "Control", "scope": "#/properties/mrid" },
+        { "type": "Control", "scope": "#/properties/name" },
+        { "type": "Control", "scope": "#/properties/normalOpen" },
+        { "type": "Control", "scope": "#/properties/phase" },
+        { "type": "Control", "scope": "#/properties/regions" },
+        { "type": "Control", "scope": "#/properties/siblings" }
+      ]
+    }
+  }
+}

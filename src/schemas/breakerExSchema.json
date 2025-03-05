@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "breaker": {
+          "type": "object",
+          "properties": {
+            "baseVoltage": { "type": "number", "description": "This is the base voltage field for the equipment" },
+            "breakingCapacity": { "type": "number", "description": "This is the breaking capacity for the equipment" },
+            "connectedEquipment": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "mrid": { "type": "string" },
+                  "type": { "type": "string", "enum": ["powerTransformer", "intersections"] }
+                },
+                "required": ["mrid", "type"]
+              }
+            },
+            "connectedString": { "type": "string" },
+            "equipmentType": { "type": "string", "enum": ["breaker"] },
+            "feederHead": { "type": "boolean" },
+            "location": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "x": { "type": "number" },
+                  "y": { "type": "number" }
+                },
+                "required": ["x", "y"]
+              }
+            },
+            "mrid": { "type": "string" },
+            "name": { "type": "string" },
+            "normalOpen": { "type": "boolean" },
+            "phase": { "type": "string", "enum": ["ABC"] },
+            "regions": { "type": "array", "items": { "type": "string" } },
+            "siblings": { "type": "array", "items": { "type": "string" } }
+          },
+          "required": [
+            "baseVoltage",
+            "breakingCapacity",
+            "connectedEquipment",
+            "connectedString",
+            "equipmentType",
+            "location",
+            "mrid",
+            "name",
+            "phase",
+            "regions",
+            "siblings"
+          ]
+        }
+      }
+  }

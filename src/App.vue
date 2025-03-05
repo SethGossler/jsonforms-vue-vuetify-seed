@@ -1,101 +1,32 @@
 <script setup lang="ts">
 import { ref, provide } from "vue";
 import { JsonForms, JsonFormsChangeEvent } from "@jsonforms/vue";
+import { extendedVuetifyRenderers } from '@jsonforms/vue-vuetify';
 import { defaultStyles, mergeStyles, vanillaRenderers } from "@jsonforms/vue-vanilla";
+import { markRaw } from 'vue';
+
+// Example Schemas and UI Schemas
+
+// An example of a "Utility Breaker" schema and UI schema
+import exschema from './schemas/breakerExSchema.json';
+import exuischema from './schemas/breakerExUISchema.json';
+
+// An example of an "Equipment Array" schema and UI schema
+// import exschema from './schemas/equipmentExSchema.json';
+// import exuischema from './schemas/equipmentExUIShema.json';
+
+// The origina example schema and UI schema from the jsonforms-vue-seed repo
+// import exschema from './schemas/originalSchema.json';
+// import exuischema from './schemas/originalUISchema.json';
 
 const renderers = Object.freeze([
-  ...vanillaRenderers,
+  ...extendedVuetifyRenderers,
   // here you can add custom renderers
 ]);
 
-const schema = {
-  properties: {
-    name: {
-      type: "string",
-      minLength: 1,
-      description: "The task's name"
-    },
-    description: {
-      title: "Long Description",
-      type: "string",
-    },
-    done: {
-      type: "boolean",
-    },
-    dueDate: {
-      type: "string",
-      format: "date",
-      description: "The task's due date"
-    },
-    rating: {
-      type: "integer",
-      maximum: 5,
-    },
-    recurrence: {
-      type: "string",
-      enum: ["Never", "Daily", "Weekly", "Monthly"]
-    },
-    recurrenceInterval: {
-      type: "integer",
-      description: "Days until recurrence"
-    },
-  },
-};
-
-const uischema = {
-  type: "HorizontalLayout",
-  elements: [
-    {
-      type: "VerticalLayout",
-      elements: [
-        {
-          type: "Control",
-          scope: "#/properties/name",
-        },
-        {
-          type: "Control",
-          scope: "#/properties/description",
-          options: {
-            multi: true,
-          }
-        },
-        {
-          type: "Control",
-          scope: "#/properties/done",
-        },
-      ],
-    },
-    {
-      type: "VerticalLayout",
-      elements: [
-        {
-          type: "Control",
-          scope: "#/properties/dueDate",
-        },
-        {
-          type: "Control",
-          scope: "#/properties/rating",
-        },
-        {
-          type: "Control",
-          scope: "#/properties/recurrence",
-        },
-        {
-          type: "Control",
-          scope: "#/properties/recurrenceInterval",
-        },
-      ],
-    },
-  ],
-};
-
-const data = ref({
-  name: "Send email to Adrian",
-  description: "Confirm if you have passed the subject\nHereby ...",
-  done: true,
-  recurrence: "Daily",
-  rating: 3,
-});
+const schema = exschema;
+const uischema = exuischema;
+const data = ref({});
 
 const onChange = (event: JsonFormsChangeEvent) => {
   data.value = event.data;
@@ -110,7 +41,7 @@ provide('styles', myStyles);
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <h1>JSON Forms Vue 3</h1>
+  <h1>JSON Forms Vue 3 w/ Vuetify 3 Added <h5>Created for openenergysolutions.com ux testing</h5></h1>
   <div class="myform">
     <json-forms :data="data" :renderers="renderers" :schema="schema" :uischema="uischema" @change="onChange" />
   </div>
@@ -118,13 +49,20 @@ provide('styles', myStyles);
 </template>
 
 <style>
+/* Delete?*/
+@import '@jsonforms/vue-vuetify/lib/jsonforms-vue-vuetify.css';
+
+img { 
+  width: 50px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 30px;
   margin-left: 120px;
   margin-right: 120px;
 }
@@ -139,8 +77,11 @@ provide('styles', myStyles);
 }
 
 .myform {
-  width: 640px;
-  margin: 0 auto;
+  width: 570px;
+  margin: 10px auto;
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .text-area {

@@ -1,0 +1,38 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.205.2/containers/typescript-node
+{
+  "name": "jsonforms-vue-seed",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "containerEnv": {
+    "CI_JOB_TOKEN": "${localEnv:CI_JOB_TOKEN}",
+    "DOCKER_API": "http://localhost/v1.41/"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "davidanson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "gruntfuggly.todo-tree",
+        "jock.svg",
+        "kosunix.guid",
+        "ms-vsliveshare.vsliveshare",
+        "waderyan.gitblame",
+        "vitest.explorer",
+        "vue.volar"
+      ]
+    }
+  },
+  "mounts": [],
+  "initializeCommand": "echo \"ROOTCA=$(mkcert --CAROOT)\" > .devcontainer/.env",
+  "postCreateCommand": "bash .devcontainer/post-create-setup.sh",
+  "remoteUser": "node",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/wget-apt-get:1": {}
+  }
+}
